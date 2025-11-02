@@ -22,4 +22,4 @@ The page uses a responsive layout, displaying properly on different devices, and
 ‘§¿¿
 preview
 
-[1.jpg](https://raw.github.com/game760/AzerothCore-Account-Registration/main/1.jpg)
+[preview](https://raw.githubusercontent.com/game760/AzerothCore-Account-Registration/main/1.jpg)
