@@ -27,6 +27,7 @@ preview
 ### Technology Summary  
 
 Document
-[en](./en.md)  [中文](./zh.md)
+
+[English](./en.md)　　[中文](./zh.md)
 
 
