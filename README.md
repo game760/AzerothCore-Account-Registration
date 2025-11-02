@@ -18,3 +18,8 @@ Core features include:
 
 页面采用响应式布局，可在不同设备上正常显示，同时结合前后端验证确保注册信息的有效性和安全性。
 The page uses a responsive layout, displaying properly on different devices, and combines front-end and back-end verification to ensure the validity and security of registration information.
+
+预览
+preview
+
+[1.jpg](./1.jpg)
