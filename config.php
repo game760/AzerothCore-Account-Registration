@@ -29,7 +29,7 @@ return [
     // 客户端下载信息
     'downloads' => [
         'client' => [
-            'name' => 'WLK 3.3.5a 客户端',
+            'name' => 'WLK 3.3.5a',
             'url' => 'https://download.example.com/client/wlk-335a.zip',
             'size' => '15.2 GB',
             'desc' => '完整客户端'
@@ -91,6 +91,9 @@ return [
             'tips2' => '稳定服务器性能',
             'tips3' => '定期更新维护',
             'tips4' => '公平游戏环境',
+            'file' => '文件路径', 
+            'path' => 'World of Warcraft\Data\zh-CN\realmlist.wtf', 
+            
         ],
         'en' => [
             'name'=>'Guardian of Azeroth', 
@@ -140,6 +143,8 @@ return [
             'tips2' => 'Stable server performance ',
             'tips3' => 'Regular update and maintenance ',
             'tips4' => 'Fair gaming environment '
+            'file' => 'file path', 
+            'path' => 'World of Warcraft\Data\en-US\realmlist.wtf', 
         ]
     ]
 ];

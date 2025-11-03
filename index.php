@@ -563,7 +563,7 @@ body {
                             </button>
                         </div>
                         <p class="text-xs" style="color: #888; margin-top: 10px; margin-bottom: 0;">
-                            文件路径：World of Warcraft\Data\zh-CN\realmlist.wtf
+                            <?= htmlspecialchars($text['file']) ?>：<?= htmlspecialchars($text['path']) ?>
                         </p>
                     </div>
                 </div>
