@@ -43,7 +43,7 @@ extract($formResult);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= sprintf(htmlspecialchars($text['title']), htmlspecialchars($config['realm_info']['name'])) ?></title>
+    <title><?= sprintf(htmlspecialchars($text['title']), htmlspecialchars($text['name'])) ?></title>
     <!-- 外部资源 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -380,30 +380,23 @@ body {
                     </a>
                 </div>
                 <h1 class="wow-title">
-                    <i class="fa fa-shield"></i> <?= htmlspecialchars($config['realm_info']['name']) ?>
+                    <?= htmlspecialchars($text['name']) ?>
                 </h1>
             </div>
 
             <!-- 服务器状态 -->
             <div class="server-status">
                 <div class="status-item">
-                    <i class="fa fa-map-marker"></i>
-                    <span><?= htmlspecialchars($config['realm_info']['address']) ?></span>
+                    官网：<span><?= htmlspecialchars($config['realm_info']['website']) ?></span>
                 </div>
                 <div class="status-item">
-                    <i class="fa fa-users"></i>
-                    <span>
-                        <span class="population-indicator"></span>
-                        <?= htmlspecialchars($text['population']) ?>: <?= htmlspecialchars($config['realm_info']['population']) ?>
-                    </span>
+                    状态: <?= htmlspecialchars($config['realm_info']['population']) ?>
                 </div>
                 <div class="status-item">
-                    <i class="fa fa-battle-net"></i>
-                    <span><?= htmlspecialchars($config['realm_info']['type']) ?></span>
+                    类型：<span><?= htmlspecialchars($config['realm_info']['type']) ?></span>
                 </div>
                 <div class="status-item">
-                    <i class="fa fa-code"></i>
-                    <span><?= htmlspecialchars($config['realm_info']['version']) ?></span>
+                    版本：<span><?= htmlspecialchars($config['realm_info']['version']) ?></span>
                 </div>
             </div>
 
@@ -532,12 +525,12 @@ body {
                         <h3 class="card-title">
                             <i class="fa fa-info-circle"></i><?= htmlspecialchars($text['server_info']) ?>
                         </h3>
-                        <p class="mb-3" style="line-height: 1.6;">基于AzerothCore的魔兽世界3.3.5a私人服务器，提供完整的巫妖王之怒游戏内容与体验。</p>
+                        <p class="mb-3" style="line-height: 1.6;"><?= htmlspecialchars($text['description']) ?></p>
                         <ul class="list-unstyled" style="line-height: 1.6;">
-                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i>完整WLK 3.3.5a内容</li>
-                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i>稳定服务器性能</li>
-                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i>定期更新维护</li>
-                            <li><i class="fa fa-check text-success me-2"></i>公平游戏环境</li>
+                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i><?= htmlspecialchars($text['tips1']) ?></li>
+                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i><?= htmlspecialchars($text['tips2']) ?></li>
+                            <li class="mb-2"><i class="fa fa-check text-success me-2"></i><?= htmlspecialchars($text['tips3']) ?></li>
+                            <li><i class="fa fa-check text-success me-2"></i><?= htmlspecialchars($text['tips4']) ?></li>
                         </ul>
                     </div>
 
@@ -564,7 +557,7 @@ body {
                         </h3>
                         <p class="mb-2 text-sm" style="color: #b0b0b0; margin-bottom: 10px;"><?= htmlspecialchars($text['realmlist_hint']) ?></p>
                         <div class="realmlist-box">
-                            <pre id="realmlistText">set realmlist <?= htmlspecialchars($config['realm_info']['address']) ?></pre>
+                            <pre id="realmlistText">set realmlist <?= htmlspecialchars($config['realm_info']['realmlist']) ?></pre>
                             <button onclick="copyRealmlist(this)" class="btn-wow w-100">
                                 <i class="fa fa-copy"></i><?= htmlspecialchars($text['copy']) ?>
                             </button>

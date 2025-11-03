@@ -20,11 +20,11 @@ return [
     ],
     // 服务器信息
     'realm_info' => [
-        'name' => '艾泽拉斯守护者',
-        'address' => 'wow.example.com',
+        'website' => 'wow.example.com',
         'population' => '中',
         'type' => 'PVP',
-        'version' => '3.3.5a (12340)'
+        'version' => '3.3.5a (12340)', 
+        'realmlist' => 'logon.example.com'
     ],
     // 客户端下载信息
     'downloads' => [
@@ -44,6 +44,7 @@ return [
     // 多语言文本
     'text' => [
         'zh' => [
+            'name' => '艾泽拉斯守护者', 
             'title' => '%s - 账号注册',
             'realm_type' => '服务器类型',
             'population' => '人口',
@@ -84,9 +85,15 @@ return [
             'captcha_invalid' => '验证未通过，请重试',
             'register_failed' => '注册失败: 系统错误，请稍后重试',
             'verify_human' => '请完成人机验证', 
-            'required_empty' => '必填项'
+            'required_empty' => '必填项', 
+            'description' => '基于AzerothCore的魔兽世界3.3.5a私人服务器，提供完整的巫妖王之怒游戏内容与体验。', 
+            'tips1' => '完整WLK 3.3.5a内容', 
+            'tips2' => '稳定服务器性能',
+            'tips3' => '定期更新维护',
+            'tips4' => '公平游戏环境',
         ],
         'en' => [
+            'name'=>'Guardian of Azeroth', 
             'title' => '%s - Account Registration',
             'realm_type' => 'Realm Type',
             'population' => 'Population',
@@ -127,7 +134,12 @@ return [
             'captcha_invalid' => 'Verification failed, please try again',
             'register_failed' => 'Registration failed: System error, please try again later',
             'verify_human' => 'Please complete human verification', 
-            'required_empty' => 'required field'
+            'required_empty' => 'required field', 
+            'Description'=>'Based on Azeroth Core World of Warcraft 3.3.5a private server, it provides complete content and experience for the Wrath of the Lich King game. ', 
+            'tips1' => 'Complete WLK 3.3.5a content ',
+            'tips2' => 'Stable server performance ',
+            'tips3' => 'Regular update and maintenance ',
+            'tips4' => 'Fair gaming environment '
         ]
     ]
 ];
