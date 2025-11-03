@@ -135,7 +135,7 @@ return [
             'register_failed' => 'Registration failed: System error, please try again later',
             'verify_human' => 'Please complete human verification', 
             'required_empty' => 'required field', 
-            'Description'=>'Based on Azeroth Core World of Warcraft 3.3.5a private server, it provides complete content and experience for the Wrath of the Lich King game. ', 
+            'description'=>'Based on AzerothCore World of Warcraft 3.3.5a private server, it provides complete content and experience for the Wrath of the Lich King game. ', 
             'tips1' => 'Complete WLK 3.3.5a content ',
             'tips2' => 'Stable server performance ',
             'tips3' => 'Regular update and maintenance ',
