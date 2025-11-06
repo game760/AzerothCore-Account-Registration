@@ -142,7 +142,7 @@ return [
             'tips1' => 'Complete WLK 3.3.5a content ',
             'tips2' => 'Stable server performance ',
             'tips3' => 'Regular update and maintenance ',
-            'tips4' => 'Fair gaming environment '
+            'tips4' => 'Fair gaming environment ', 
             'file' => 'file path', 
             'path' => 'World of Warcraft\Data\en-US\realmlist.wtf', 
         ]
