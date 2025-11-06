@@ -387,16 +387,13 @@ body {
             <!-- 服务器状态 -->
             <div class="server-status">
                 <div class="status-item">
-                    官网：<span><?= htmlspecialchars($config['realm_info']['website']) ?></span>
+                    <?= htmlspecialchars($text['website']) ?>：<span><?= htmlspecialchars($config['realm_info']['website']) ?></span>
                 </div>
                 <div class="status-item">
-                    状态: <?= htmlspecialchars($config['realm_info']['population']) ?>
+                    <?= htmlspecialchars($text['type']) ?>：<span><?= htmlspecialchars($config['realm_info']['type']) ?></span>
                 </div>
                 <div class="status-item">
-                    类型：<span><?= htmlspecialchars($config['realm_info']['type']) ?></span>
-                </div>
-                <div class="status-item">
-                    版本：<span><?= htmlspecialchars($config['realm_info']['version']) ?></span>
+                    <?= htmlspecialchars($text['version']) ?>：<span><?= htmlspecialchars($config['realm_info']['version']) ?></span>
                 </div>
             </div>
 
@@ -469,7 +466,7 @@ body {
                                     </label>
                                     <input type="password" id="password" name="password" 
                                         class="form-control <?= !empty($errors['password']) ? 'is-invalid' : '' ?>">
-                                    <div>
+                                    <div id="passwordError">
                                         <?php foreach ($errors['password'] as $error): ?>
                                             <div class="error"><i class="fa fa-times-circle"></i><?= htmlspecialchars($error) ?></div>
                                         <?php endforeach; ?>
@@ -485,7 +482,7 @@ body {
                                     </label>
                                     <input type="password" id="password_confirm" name="password_confirm" 
                                         class="form-control <?= !empty($errors['password_confirm']) ? 'is-invalid' : '' ?>">
-                                    <div>
+                                    <div id="passwordConfirmError">
                                         <?php foreach ($errors['password_confirm'] as $error): ?>
                                             <div class="error"><i class="fa fa-times-circle"></i><?= htmlspecialchars($error) ?></div>
                                         <?php endforeach; ?>
@@ -542,7 +539,7 @@ body {
                         <div class="download-box">
                             <h4 class="download-title"><?= htmlspecialchars($config['downloads']['client']['name']) ?></h4>
                             <div class="download-info">
-                                <div><i class="fa fa-hdd-o"></i>大小: <?= htmlspecialchars($config['downloads']['client']['size']) ?></div>
+                                <div><i class="fa fa-hdd-o"></i>Size: <?= htmlspecialchars($config['downloads']['client']['size']) ?></div>
                             </div>
                             <a href="<?= htmlspecialchars($config['downloads']['client']['url']) ?>" class="btn-wow w-100">
                                 <i class="fa fa-download"></i><?= htmlspecialchars($text['download']) ?>
@@ -667,6 +664,59 @@ body {
             });
         }, 500));
 
+        // 密码实时验证
+        const passwordInput = document.getElementById('password');
+        passwordInput.addEventListener('input', debounce(function() {
+            const password = this.value;
+            const errorEl = document.getElementById('passwordError');
+            const errors = [];
+            
+            // 检查密码长度
+            if (password.length < 8) {
+                errors.push('<?= htmlspecialchars($text['password_length']) ?>');
+            }
+            
+            // 检查特殊字符
+            if (!/[!@#$%^&*]/.test(password)) {
+                errors.push('<?= htmlspecialchars($text['password_char']) ?>');
+            }
+            
+            // 显示错误信息
+            if (errors.length > 0) {
+                errorEl.innerHTML = errors.map(err => `<div class="error"><i class="fa fa-times-circle"></i>${err}</div>`).join('') + 
+                                   `<div class="hint"><i class="fa fa-info-circle"></i><?= htmlspecialchars($text['password_length']) ?></div>` +
+                                   `<div class="hint"><i class="fa fa-info-circle"></i><?= htmlspecialchars($text['password_char']) ?></div>`;
+                this.classList.add('is-invalid');
+            } else {
+                errorEl.innerHTML = `<div class="success"><i class="fa fa-check-circle"></i>密码有效</div>` +
+                                   `<div class="hint"><i class="fa fa-info-circle"></i><?= htmlspecialchars($text['password_length']) ?></div>` +
+                                   `<div class="hint"><i class="fa fa-info-circle"></i><?= htmlspecialchars($text['password_char']) ?></div>`;
+                this.classList.remove('is-invalid');
+                // 触发确认密码验证
+                document.getElementById('password_confirm').dispatchEvent(new Event('input'));
+            }
+        }, 300));
+
+        // 确认密码实时验证
+        const passwordConfirmInput = document.getElementById('password_confirm');
+        passwordConfirmInput.addEventListener('input', debounce(function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            const errorEl = document.getElementById('passwordConfirmError');
+            
+            if (confirmPassword === '') {
+                errorEl.innerHTML = '';
+                return;
+            }
+            
+            if (password === confirmPassword && password !== '') {
+                errorEl.innerHTML = `<div class="success"><i class="fa fa-check-circle"></i>两次密码一致</div>`;
+                this.classList.remove('is-invalid');
+            } else {
+                errorEl.innerHTML = `<div class="error"><i class="fa fa-times-circle"></i><?= htmlspecialchars($text['password_mismatch']) ?></div>`;
+                this.classList.add('is-invalid');
+            }
+        }, 300));
 
 // 表单提交前验证
 document.getElementById('registrationForm').addEventListener('submit', function(e) {
@@ -681,7 +731,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const turnstileResponse = document.querySelector('input[name="cf-turnstile-response"]')?.value || '';
     
     // 清空之前的错误提示
-    document.querySelectorAll('.error').forEach(el => el.remove());
+    document.querySelectorAll('#usernameError .error, #emailError .error, #passwordError .error, #passwordConfirmError .error').forEach(el => el.remove());
     
     let hasError = false;
     
@@ -701,11 +751,17 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     if (password === '') {
         showError('password', '<?= htmlspecialchars($text['password']) ?><?= htmlspecialchars($text['required_empty']) ?>');
         hasError = true;
+    } else if (password.length < 8 || !/[!@#$%^&*]/.test(password)) {
+        showError('password', '<?= htmlspecialchars($text['password_invalid']) ?>');
+        hasError = true;
     }
     
     // 确认密码验证
     if (passwordConfirm === '') {
         showError('password_confirm', '<?= htmlspecialchars($text['password_confirm']) ?><?= htmlspecialchars($text['required_empty']) ?>');
+        hasError = true;
+    } else if (password !== passwordConfirm) {
+        showError('password_confirm', '<?= htmlspecialchars($text['password_mismatch']) ?>');
         hasError = true;
     }
     
@@ -731,6 +787,10 @@ function showError(fieldId, message) {
     // 将错误提示添加到字段下方
     if (fieldId === 'username') {
         document.getElementById('usernameError').prepend(errorDiv);
+    } else if (fieldId === 'password') {
+        document.getElementById('passwordError').prepend(errorDiv);
+    } else if (fieldId === 'password_confirm') {
+        document.getElementById('passwordConfirmError').prepend(errorDiv);
     } else {
         field.parentNode.appendChild(errorDiv);
     }

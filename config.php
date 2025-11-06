@@ -8,7 +8,7 @@ return [
         'host' => 'localhost',
         'name' => 'acore_auth',
         'user' => 'root',
-        'pass' => 'password',
+        'pass' => '123456',
         'charset' => 'utf8mb4'
     ],
     // 游戏版本 (0:经典, 1:TBC, 2:WLK)
@@ -21,7 +21,6 @@ return [
     // 服务器信息
     'realm_info' => [
         'website' => 'wow.example.com',
-        'population' => '中',
         'type' => 'PVP',
         'version' => '3.3.5a (12340)', 
         'realmlist' => 'logon.example.com'
@@ -44,6 +43,9 @@ return [
     // 多语言文本
     'text' => [
         'zh' => [
+            'website' => '官网', 
+            'type' => '类型', 
+            'version' => '版本', 
             'name' => '艾泽拉斯守护者', 
             'title' => '%s - 账号注册',
             'realm_type' => '服务器类型',
@@ -72,7 +74,7 @@ return [
             'copied' => '已复制',
             'download' => '下载',
             'success_title' => '注册成功！',
-            'success_msg' => '您的账号已创建，请，请请返回客户端登录游戏。',
+            'success_msg' => '您的账号已创建，请返回客户端登录游戏。',
             'back_home' => '返回首页',
             'error_title' => '错误提示',
             'username_exists' => '该用户名已被注册',
@@ -80,11 +82,11 @@ return [
             'email_exists' => '该邮箱已被注册',
             'email_invalid' => '请输入有效的邮箱',
             'password_invalid' => '密码需至少8位且包含特殊字符(!@#$%^&*)',
-            'password_mismatch' => '两次次密码不一致',
+            'password_mismatch' => '两次密码不一致',
             'captcha_empty' => '请完成验证',
             'captcha_invalid' => '验证未通过，请重试',
             'register_failed' => '注册失败: 系统错误，请稍后重试',
-            'verify_human' => '请完成人机验证', 
+            'verify_human' => '完成人机验证', 
             'required_empty' => '必填项', 
             'description' => '基于AzerothCore的魔兽世界3.3.5a私人服务器，提供完整的巫妖王之怒游戏内容与体验。', 
             'tips1' => '完整WLK 3.3.5a内容', 
@@ -92,11 +94,14 @@ return [
             'tips3' => '定期更新维护',
             'tips4' => '公平游戏环境',
             'file' => '文件路径', 
-            'path' => 'World of Warcraft\Data\zh-CN\realmlist.wtf', 
+            'path' => 'World of Warcraft\Data\zhCN\realmlist.wtf',
             
         ],
         'en' => [
-            'name'=>'Guardian of Azeroth', 
+            'website' => 'WebSite', 
+            'type' => 'Type', 
+            'version' => 'Version', 
+            'name'=>'Guardian of Azerothcore', 
             'title' => '%s - Account Registration',
             'realm_type' => 'Realm Type',
             'population' => 'Population',
@@ -144,7 +149,7 @@ return [
             'tips3' => 'Regular update and maintenance ',
             'tips4' => 'Fair gaming environment ', 
             'file' => 'file path', 
-            'path' => 'World of Warcraft\Data\en-US\realmlist.wtf', 
+            'path' => 'World of Warcraft\Data\enUS\realmlist.wtf', 
         ]
     ]
 ];

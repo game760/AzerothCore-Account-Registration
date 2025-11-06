@@ -202,30 +202,33 @@ function handleFormSubmission($pdo, $config, $text) {
             $hasError = true;
         }
 
-        // 验证密码
-        if (empty($password)) {
-            $fieldErrors['password'][] = $text['password'] . $text['captcha_empty'];
-            $hasError = true;
-        } elseif (strlen($password) < 8 || !preg_match('/[!@#$%^&*]/', $password)) {
-            $fieldErrors['password'][] = $text['password_invalid'];
-            $hasError = true;
-        }
-
-        // 验证确认密码
-        if (empty($passwordConfirm)) {
+// 验证密码
+if (trim($password) === '') {
+    $fieldErrors['password'][] = $text['password'] . $text['captcha_empty'];
+    $hasError = true;
+} else {
+    // 密码非空时才验证长度和特殊字符
+    if (strlen($password) < 8 || !preg_match('/[!@#$%^&*]/', $password)) {
+        $fieldErrors['password'][] = $text['password_invalid'];
+        $hasError = true;
+    } else {
+        // 密码有效时才验证确认密码（减少无效计算）
+        if (trim($passwordConfirm) === '') {
             $fieldErrors['password_confirm'][] = $text['password_confirm'] . $text['captcha_empty'];
             $hasError = true;
         } elseif ($password !== $passwordConfirm) {
             $fieldErrors['password_confirm'][] = $text['password_mismatch'];
             $hasError = true;
         }
+    }
+}
 
 // 人机验证的部分
 if (empty($turnstileResponse)) {
     // 只记录错误日志，不返回前端错误信息
     error_log("Turnstile验证失败: 空响应值");
     $hasError = true;
-} elseif (strlen($turnstileResponse) < 10) { // 简单长度验证
+} elseif (strlen($turnstileResponse) < 10) {
     error_log("Turnstile验证失败: 响应值长度不足");
     $hasError = true;
 } elseif (!verifyTurnstile($turnstileResponse, $config['turnstile']['secret_key'])) {
