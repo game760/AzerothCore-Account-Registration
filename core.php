@@ -274,6 +274,9 @@ function checkPhpExtensions() {
     }
 
     if (!empty($missingExtensions)) {
+        //  implode the missing extensions first before the heredoc
+        $missingList = implode("\n", $missingExtensions);
+        
         header('Content-Type: text/html; charset=utf-8');
         echo <<<HTML
         <!DOCTYPE html>
@@ -293,7 +296,7 @@ function checkPhpExtensions() {
                     <h2 class="text-center text-danger mb-4">缺少必要PHP扩展</h2>
                     <p class="text-light/80 mb-3">无法运行魔兽世界账号注册系统，缺少以下扩展：</p>
                     <ul class="list-unstyled text-danger mb-0">
-                        {implode("\n", $missingExtensions)}
+                        {$missingList}
                     </ul>
                 </div>
             </div>
