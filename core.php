@@ -383,11 +383,9 @@ function handleFormSubmission($pdo, $config) {
 function checkPhpExtensions() {
     $requiredExtensions = [
         'pdo_mysql' => 'PDO MySQL 扩展（数据库连接）',
-        'openssl' => 'OpenSSL 扩展（安全加密）',
-        'json' => 'JSON 扩展（AJAX数据处理）',
         'gmp' => 'GMP 扩展（SRP6加密）',
-        'filter' => 'Filter 扩展（输入验证）',
-        'gd' => 'GD 扩展（验证码图片生成）' // 新增验证码所需扩展
+        'gd' => 'GD 扩展（验证码图片生成）', 
+        'mbstring' => '扩展处理多字节字符（如中文、日文等）', 
     ];
     $missingExtensions = [];
     foreach ($requiredExtensions as $ext => $desc) {
