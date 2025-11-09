@@ -153,7 +153,7 @@ try {
 </nav>
 
 <div class="container">
-    <h1>AzerothCore 角色排行榜 - 前<?php echo $displayConfig['max_ranking']; ?>名</h1>
+    <h1>英雄榜 - 前<?php echo $displayConfig['max_ranking']; ?>名</h1>
     
     <!-- 搜索表单 -->
     <div class="search-container">

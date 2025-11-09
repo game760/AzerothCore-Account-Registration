@@ -69,8 +69,8 @@ extract($formResult);
         .server-status { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
         .status-item { color: #aaa; font-size: 14px; }
         .status-item span { color: #fff; margin-left: 5px; }
-        .content-section { display: flex; gap: 50px; }
-        .form-section { flex: 1; }
+        .content-section { display: flex; gap: 30px; }
+        .form-section { flex: 0 0 60%; max-width:350px; margin: 0 auto; }
         .info-section { flex: 1; }
         .form-section h2, .info-section h2 { color: var(--wow-gold); margin-top: 0; border-bottom: 2px solid #333; padding-bottom: 10px; }
         .form-group { margin-bottom: 20px; }
@@ -282,22 +282,6 @@ extract($formResult);
                     <button type="submit" class="submit-btn">创建账号</button>
                 </form>
             </div>
-            
-            <!-- Realmlist配置 -->
-            <div class="info-section">
-                <h2>Realmlist配置</h2>
-                <div class="download-box">
-                    <h3 class="download-title">Realmlist配置</h3>
-                    <p class="download-info">客户端登录前需配置Realmlist文件：</p>
-                    <div class="realmlist-box">
-                        <pre id="realmlistText">set realmlist <?= htmlspecialchars($serverinfo['realmlist']) ?></pre>
-                        <button onclick="copyRealmlist(this)" class="copy-btn">
-                            <i class="fa fa-copy"></i> 复制
-                        </button>
-                    </div>
-                    <p class="download-info"><i class="fa fa-folder-open"></i> 文件路径：World of Warcraft\Data\zhCN\realmlist.wtf</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -309,8 +293,8 @@ extract($formResult);
         <div class="icon">
             <i class="fa fa-check-circle"></i>
         </div>
-        <h2>注册成功！</h2>
-        <p>恭喜您成功创建艾泽拉斯守护者账号！<br>现在您可以登录游戏，开始您的冒险之旅了。</p>
+        <h2>恭喜您成功创建账号！</h2>
+        <p>现在前往下载页面安装客户端或复制Realmlist配置，<br>使用您注册的账号登录游戏，开始艾泽拉斯冒险之旅。</p>
         <button class="close-btn" onclick="document.getElementById('successModal').classList.remove('active')">
             开始游戏
         </button>
@@ -319,16 +303,6 @@ extract($formResult);
 <?php endif; ?>
 
 <script>
-// 复制Realmlist配置
-document.addEventListener('DOMContentLoaded', function() {
-    window.copyRealmlist = function(btn) {
-        const text = document.getElementById('realmlistText').textContent.trim();
-        navigator.clipboard.writeText(text).then(() => {
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<i class="fa fa-check"></i> 已复制`;
-            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
-        });
-    };
 
     // 密码验证函数
     function validatePassword(password) {
@@ -523,6 +497,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
 </script>
 </body>
 </html>
