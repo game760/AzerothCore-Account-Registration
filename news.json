@@ -1,0 +1,59 @@
+{
+  "settings": {
+    "news_count": 3,
+    "announcement_count": 2,
+    "content_truncate_length": 200
+  },
+  "items": [
+    {
+      "id": 1,
+      "title": "服务器即将更新至最新版本",
+      "content": "我们计划在下周进行一次重大更新，引入新的副本和任务。请各位玩家提前做好准备，更新期间服务器将暂时关闭，预计持续4小时。更新后将有全新的游戏内容和平衡性调整，敬请期待！",
+      "date": "2023-11-15",
+      "author": "管理员",
+      "image": "https://wow.zamimg.com/uploads/screenshots/normal/1011604.jpg",
+      "type": "news",
+      "pinned": false
+    },
+    {
+      "id": 2,
+      "title": "首届服务器PVP大赛即将开始",
+      "content": "我们很高兴地宣布，首届服务器PVP大赛将于11月20日正式开始，优胜者将获得丰厚奖励和独特头衔。比赛分为多个组别，每个组别将有不同的规则和奖励设置。请有意参加的玩家提前做好准备。",
+      "date": "2023-11-10",
+      "author": "管理员",
+      "image": "https://wow.zamimg.com/uploads/screenshots/normal/1011588.jpg",
+      "type": "news",
+      "pinned": false
+    },
+    {
+      "id": 3,
+      "title": "新增冬季活动区域开放",
+      "content": "随着冬季的来临，游戏中新增了冬季活动区域，玩家可以参与各种节日活动，获得限定奖励。活动将持续到明年1月，期间将有各种有趣的任务和挑战等待玩家参与。",
+      "date": "2023-11-05",
+      "author": "管理员",
+      "image": "https://wow.zamimg.com/uploads/screenshots/normal/1011572.jpg",
+      "type": "news",
+      "pinned": false
+    },
+    {
+      "id": 4,
+      "title": "关于账号安全的重要通知",
+      "content": "近期发现有玩家账号被盗情况，请大家务必开启双重认证，不要分享账号信息给他人，确保密码复杂度。如遇账号异常，请立即联系客服进行处理，我们将尽快为您解决问题。",
+      "date": "2023-11-14",
+      "author": "管理员",
+      "image": "",
+      "type": "announcement",
+      "pinned": true
+    },
+    {
+      "id": 5,
+      "title": "维护通知：11月12日将进行服务器维护",
+      "content": "为了提供更好的游戏体验，我们将于11月12日凌晨2点至6点进行服务器维护，届时将无法登录游戏。维护期间我们将进行系统升级和数据优化，给您带来的不便敬请谅解。",
+      "date": "2023-11-08",
+      "author": "管理员",
+      "image": "",
+      "type": "announcement",
+      "pinned": false
+    }
+  ]
+}
