@@ -303,7 +303,6 @@ extract($formResult);
 <?php endif; ?>
 
 <script>
-
     // 密码验证函数
     function validatePassword(password) {
         const minLength = password.length >= 8;
@@ -318,6 +317,12 @@ extract($formResult);
     // 确认密码验证
     function validatePasswordConfirm(password, confirm) {
         return password === confirm && confirm.trim() !== '';
+    }
+
+    // 邮箱验证函数
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
     }
 
     // 实时验证用户名和邮箱（AJAX）
@@ -337,48 +342,52 @@ extract($formResult);
         }
     });
     
-    // 邮箱验证
-    emailInput.addEventListener('blur', function() {
+    // 邮箱实时验证 - 改为输入时验证
+    emailInput.addEventListener('input', function() {
         const email = this.value.trim();
         if (email) {
+            // 先进行前端格式验证
+            if (!isValidEmail(email)) {
+                showError('email', '邮箱格式不正确', '#ff6b6b');
+                return;
+            }
+            // 前端验证通过后再进行后端验证
             checkField('check_email', 'email', email);
         } else {
             hideError('email');
         }
     });
 
-    // 密码实时验证
+    // 密码实时验证 - 增强反馈
     passwordInput.addEventListener('input', function() {
         const password = this.value;
         const result = validatePassword(password);
-        const errorEl = document.getElementById('password-error');
         
         if (password.trim() === '') {
             hideError('password');
-            return;
-        }
-        
-        if (!result.valid) {
+        } else {
             let message = [];
             if (!result.minLength) message.push('密码长度至少8位');
             if (!result.hasSpecialChar) message.push('需包含特殊字符(!@#$%^&*)');
-            showError('password', message.join('，'), '#ff6b6b');
-        } else {
-            showError('password', '密码格式有效', '#4CAF50');
-            // 触发确认密码验证
-            if (passwordConfirmInput.value) {
-                checkPasswordConfirm();
+            
+            if (message.length > 0) {
+                showError('password', message.join('，'), '#ff6b6b');
+            } else {
+                showError('password', '密码格式有效', '#4CAF50');
             }
         }
+        
+        // 密码变化时同步验证确认密码
+        checkPasswordConfirm();
     });
     
-    // 确认密码验证
+    // 确认密码实时验证
     passwordConfirmInput.addEventListener('input', checkPasswordConfirm);
     
+    // 单独的确认密码验证函数
     function checkPasswordConfirm() {
         const password = passwordInput.value;
         const confirm = passwordConfirmInput.value;
-        const errorEl = document.getElementById('password_confirm-error');
         
         if (confirm.trim() === '') {
             hideError('password_confirm');
@@ -484,21 +493,12 @@ extract($formResult);
         }
     });
     
-    // 邮箱格式验证
-    function isValidEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-    
     // 点击模态框外部关闭
     document.getElementById('successModal')?.addEventListener('click', function(e) {
         if (e.target === this) {
             this.classList.remove('active');
         }
     });
-});
-
-
 </script>
 </body>
 </html>
