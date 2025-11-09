@@ -1,36 +1,41 @@
-# AzerothCore Account Registration
-
-这是一个艾泽拉斯核心的账号注册系统页面，主要用于玩家注册游戏账号该服务器的游戏账号页面。
-
-This is an account registration system page for a AzerothCore private server, primarily used for players to register game accounts for the server.
-
-核心功能包括： 
-Core features include: 
-	
-- 支持中英文语言切换，适应不同用户需求
-   Supports Chinese and English language switching to meet different user needs
-   
-- 提供账号注册表单，包含用户名、邮箱、密码等信息填写
-   Provides an account registration form with fields for username, email, password, etc.
-   
-- 集成人机验证功能，防止恶意注册行为
-   Integrates human-machine verification to prevent malicious registration
-   
-- 展示服务器关键信息（地址、人口状态、版本等）
-   Displays key server information (address, population status, version, etc.)
-   
-- 采用魔兽世界主题风格设计，提升用户体验
-   Uses World of Warcraft-themed design to enhance user experience
-
-- 页面采用响应式布局，可在不同设备上正常显示，同时结合前后端验证确保注册信息的有效性和安全性。
-The page uses a responsive layout, displaying properly on different devices, and combines front-end and back-end verification to ensure the validity and security of registration information.
-
-### 预览 preview
-
-[preview](https://raw.githubusercontent.com/game760/AzerothCore-Account-Registration/main/1.jpg)
-
-### Technology Summary  
-
-Document　　[English](./en.md)　　[中文](./zh.md)
+##### This is a website project applicable to the AzerothCore core, supporting the following functions:
+- Simple news
+- Announcements
+- Account registration
+- Armory
+- Client download
+- Armory (supporting character search and equipment viewing)
+More functions need to be experienced by yourself.
 
 
+##### It is developed using ```PHP + HTML + CSS + Bootstrap + Font Awesome```, which is beautiful and elegant, and convenient for secondary development.
+
+- Dependency requirements:
+  - ```pdo_mysql```
+  - ```gmp```
+  - ```gd```
+  - ```mbstring```
+
+This code is for personal learning only and strictly prohibited for commercial use.
+
+--- 
+
+##### 这是适用于zaerothcore核心的网站项目，支持以下功能
+ - 简单新闻
+ - 公告
+ - 账号注册
+ - 英雄榜
+ - 客户端下载
+ - 英雄榜（支持角色搜索、查看装备）
+ 更多功能需要自行体验。
+
+
+##### 使用 ```PHP + HTML + CSS + Bootstrap + Font Awesome``` 美观大方，方便二开。
+
+- 依赖需求：
+  - ```pdo_mysql```
+  - ```gmp```
+  - ```gd```
+  - ```mbstring```
+
+本代码仅供个人学习，严禁商业用途。
